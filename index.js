@@ -27,6 +27,8 @@ const sponsors = [
   {name: "FALCO COFFEE", img: "logo_falco.png", url: "https://www.falcofietsbar.be/"},
   {name: "De Spanuit", img: "logo_despanuit.png", url: "https://www.despanuit.be/"},
   {name: "V-BUILD", img: "logo_vbuild.png", url: "https://v-build.be/"},
+  {name: "Cafe 't Leeuwke", img: "https://leeuwsewielertoeristen.be/lwt1/wp-content/uploads/2024/03/logo_cafe_tleeuwke.png", url: "https://www.cafe-tleeuwke.com/"},
+  {name: "Stedi Cars", img: "https://leeuwsewielertoeristen.be/lwt1/wp-content/uploads/2024/03/logo-stedi_cars.png", url: "https://www.stedicars.be/"},
 ];
 
 const marqueeItems = sponsors.map(({ img, url }) => genMarqueeItem(img, url)).join('\n');
