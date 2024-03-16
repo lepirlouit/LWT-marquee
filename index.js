@@ -2,10 +2,10 @@
 
 const fs = require('fs');
 
-const genMarqueeItem = (img, url) => `<div class="marquee"><a href="${url}" target=”_blank”><img src="${img.includes("/")?img:`https://leeuwsewielertoeristen.be/lwt1/wp-content/uploads/2024/02/${img}`}"/></a></div>`;
+const genMarqueeItem = (img, url, name) => `<a draggable="false"  href="${url}" target=”_blank”><img draggable="false" loading="eager" alt="${name}" src="${img.includes("/")?img:`https://leeuwsewielertoeristen.be/lwt1/wp-content/uploads/2024/02/${img}`}"/></a>`;
 
 const sponsors = [
-  {name: "VWB", img: "https://leeuwsewielertoeristen.be/lwt1/wp-content/uploads/2020/12/Logo-VWB-zonder-achtergrond-150x150-1.png", url: "https://www.vwb.be/"},
+  // {name: "VWB", img: "https://leeuwsewielertoeristen.be/lwt1/wp-content/uploads/2020/12/Logo-VWB-zonder-achtergrond-150x150-1.png", url: "https://www.vwb.be/"},
   {name: "Culinaire slagerij De nachtegaal", img: "DeNachtegael.png", url: "https://www.nachtegael-slager-traiteur.be/"},
   {name: "Wijnen Julien", img: "https://leeuwsewielertoeristen.be/lwt1/wp-content/uploads/2024/02/WijnenJulien.png", url: "https://www.lesvinsdejulien.be/"},
   {name: "CAFETARIA MERSELBORRE", img: "mersel-648c75f148ca7553558391.webp", url: "https://menucards.cc/Merselborre"},
@@ -31,11 +31,11 @@ const sponsors = [
   {name: "Stedi Cars", img: "https://leeuwsewielertoeristen.be/lwt1/wp-content/uploads/2024/03/logo-stedi_cars.png", url: "https://www.stedicars.be/"},
 ];
 
-const marqueeItems = sponsors.map(({ img, url }) => genMarqueeItem(img, url)).join('\n');
+const marqueeItems = sponsors.map(({ img, url, name }) => genMarqueeItem(img, url, name)).join('\n');
 
 const templateFileContent = fs.readFileSync('./marqueeHTMLTemplate.html').toString();
 
-const finalHTML = templateFileContent.replace(/{{marqueeItems}}/, marqueeItems);
+const finalHTML = templateFileContent.replace(/{{marqueeItems}}/g, marqueeItems);
 
 
 

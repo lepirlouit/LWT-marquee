@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<head>
+
+</head>
+
+<body>
+
+  <style>
+    :root {
+      --gap: 1rem;
+      --coral: #f17144;
+    }
+
+    .marquee {
+      display: flex;
+      overflow: hidden;
+      user-select: none;
+  margin-bottom: 1rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+      width: 100%;
+      column-gap: var(--gap);
+      background-color: var(--coral);
+    }
+    .marquee-content {
+      flex: 0 0 auto;
+      display: flex;
+      justify-content: space-around;
+      min-width: 100%;
+      column-gap: var(--gap);
+    }
+
+    @keyframes scroll {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(calc(-100% - 1rem));
+      }
+    }
+
+
+
+    .scroll {
+      animation: scroll 10s linear infinite;
+    }
+
+    .reverse {
+      animation-direction: reverse;
+    }
+  </style>
+  Hello World
+  <div class="marquee">
+    <ul class="marquee-content scroll">
+      <li>Item 1</li>
+      <li>Item 2</li>
+      <li>Item 3</li>
+    </ul>
+    <!-- Mirrors the content above -->
+    <ul class="marquee-content scroll" aria-hidden="true">
+      <li>Item 1</li>
+      <li>Item 2</li>
+      <li>Item 3</li>
+    </ul>
+  </div>
+  <div class="marquee">
+    <div data-w-id="5019c66c-750d-182e-5542-392e989cdee5" class="marquee-content scroll reverse"><img draggable="false"
+        src="https://uploads-ssl.webflow.com/65f54bc5e5834f0c49665c22/65f54bc6e5834f0c49665d30_logoipsum-287.svg"
+        loading="eager" alt="" class="marquee-image"><img draggable="false"
+        src="https://uploads-ssl.webflow.com/65f54bc5e5834f0c49665c22/65f54bc6e5834f0c49665d2f_logoipsum-286%20(1).svg"
+        loading="eager" alt="" class="marquee-image"><img draggable="false"
+        src="https://uploads-ssl.webflow.com/65f54bc5e5834f0c49665c22/65f54bc6e5834f0c49665d30_logoipsum-287.svg"
+        loading="eager" alt="" class="marquee-image hide-mobile"><img draggable="false"
+        src="https://uploads-ssl.webflow.com/65f54bc5e5834f0c49665c22/65f54bc6e5834f0c49665d2f_logoipsum-286%20(1).svg"
+        loading="eager" alt="" class="marquee-image hide-mobile"></div>
+    <div data-w-id="9d639408-3a54-36d6-ed74-28235f8089d8" class="marquee-content scroll reverse"><img draggable="false"
+        src="https://uploads-ssl.webflow.com/65f54bc5e5834f0c49665c22/65f54bc6e5834f0c49665d30_logoipsum-287.svg"
+        loading="eager" alt="" class="marquee-image"><img draggable="false"
+        src="https://uploads-ssl.webflow.com/65f54bc5e5834f0c49665c22/65f54bc6e5834f0c49665d2f_logoipsum-286%20(1).svg"
+        loading="eager" alt="" class="marquee-image"><img draggable="false"
+        src="https://uploads-ssl.webflow.com/65f54bc5e5834f0c49665c22/65f54bc6e5834f0c49665d30_logoipsum-287.svg"
+        loading="eager" alt="" class="marquee-image hide-mobile"><img draggable="false"
+        src="https://uploads-ssl.webflow.com/65f54bc5e5834f0c49665c22/65f54bc6e5834f0c49665d2f_logoipsum-286%20(1).svg"
+        loading="eager" alt="" class="marquee-image hide-mobile"></div>
+  </div>
+</body>
+
+</html>

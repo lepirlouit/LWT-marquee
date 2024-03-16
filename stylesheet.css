@@ -1,50 +1,36 @@
-.Marquees{
-  width: 100vw;
+
+.marquee {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   overflow: hidden;
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  background: #FFF;
-	overflow-x: hidden;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  user-select: none;
+  width: 100%;
+  column-gap: 1rem;
 }
-.MarqueeLine{
+
+.marquee-content {
+  flex: 0 0 auto;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 200vw;
-  height: 13vh;
+  justify-content: space-around;
+  min-width: 100%;
+  column-gap: 1rem;
 }
-	.marquee > *{
-		
-	margin-left: 10px;
-	}
-.marquee{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #fff;
-  height: 11vh;
-  width: 12.5vw;
-	/*line 43 is very important. since we have 16 items, width of the Marquee which is 200vw must be devided between them. which turns out to be 12.5vw*/
-  margin: 10px;
-  border-radius: 15px;
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(calc(-100% - 1rem));
+  }
 }
-.marquee:hover{
-  background: #eee;
+
+.scroll {
+  animation: scroll 60s linear infinite;
 }
-.rightToLeft{
-animation: Scroll 60s linear infinite;}
-.leftToRight{
-  animation: Scroll 60s linear infinite;
-  animation-direction: reverse;
-}
-@keyframes Scroll {
-    0% {transform: translateX(-50vw);
-        -webkit-transform: translateX(-50vw);}
-      100% {transform: translateX(50vw);
-          -webkit-transform: translateX(50vw);}
+
+.marquee-content img {
+  max-height: 70px;
 }
