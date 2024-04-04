@@ -87,7 +87,7 @@ const styleSheetContent =
 }
 
 .scroll {
-  animation: scroll 60s linear infinite;
+  animation: scroll 120s linear infinite;
 }
 
 .marquee-content img {
