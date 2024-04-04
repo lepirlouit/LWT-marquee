@@ -1,8 +1,6 @@
 // <div class="marquee"></div>
 
-const fs = require('fs');
-
-const genMarqueeItem = (img, url, name) => `<a draggable="false"  href="${url}" target=”_blank”><img draggable="false" loading="eager" alt="${name}" src="${img.includes("/")?img:`https://leeuwsewielertoeristen.be/lwt1/wp-content/uploads/2024/02/${img}`}"/></a>`;
+const genMarqueeItem = (img, url, name) => `<a draggable="false"  href="${url}" target="_blank"><img draggable="false" loading="eager" alt="${name}" src="${img.includes("/")?img:`https://leeuwsewielertoeristen.be/lwt1/wp-content/uploads/2024/02/${img}`}"/></a>`;
 
 const sponsors = [
   // {name: "VWB", img: "https://leeuwsewielertoeristen.be/lwt1/wp-content/uploads/2020/12/Logo-VWB-zonder-achtergrond-150x150-1.png", url: "https://www.vwb.be/"},
@@ -30,20 +28,74 @@ const sponsors = [
   {name: "Cafe 't Leeuwke", img: "https://leeuwsewielertoeristen.be/lwt1/wp-content/uploads/2024/03/logo_cafe_tleeuwke.png", url: "https://www.cafe-tleeuwke.com/"},
   {name: "Stedi Cars", img: "https://leeuwsewielertoeristen.be/lwt1/wp-content/uploads/2024/03/logo-stedi_cars.png", url: "https://www.stedicars.be/"},
 ];
+const shuffleArray = array => {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+  }
+}
+
+shuffleArray(sponsors);
 
 const marqueeItems = sponsors.map(({ img, url, name }) => genMarqueeItem(img, url, name)).join('\n');
 
-const templateFileContent = fs.readFileSync('./marqueeHTMLTemplate.html').toString();
+const templateFileContent = `
+<div class="marquee">
+<div class="marquee-content scroll">
+  {{marqueeItems}}
+</div>
+<div class="marquee-content scroll" aria-hidden="true">
+  {{marqueeItems}}
+</div>
+</div>
+`
 
 const finalHTML = templateFileContent.replace(/{{marqueeItems}}/g, marqueeItems);
 
 
 
-const fullWidgetTemplatecontent = fs.readFileSync('./fullWidgetTemplate.html').toString();
-const styleSheetContent = fs.readFileSync('./stylesheet.css').toString();
+const styleSheetContent = 
+`
+.marquee {
+  display: flex;
+  overflow: hidden;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  user-select: none;
+  width: 100%;
+  column-gap: 1rem;
+}
 
+.marquee-content {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: space-around;
+  min-width: 100%;
+  column-gap: 1rem;
+}
 
-const outFile = fullWidgetTemplatecontent.replace(/{{finalHTML}}/, finalHTML).replace(/{{styleSheetContent}}/, styleSheetContent);
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
 
+  to {
+    transform: translateX(calc(-100% - 1rem));
+  }
+}
 
-fs.writeFileSync('./output.html', outFile);
+.scroll {
+  animation: scroll 60s linear infinite;
+}
+
+.marquee-content img {
+  max-height: 70px;
+}
+`
+
+jQuery("#wp-custom-header").append(
+finalHTML
+  )
+jQuery("<style/>").text(styleSheetContent).appendTo(document.head);
