@@ -27,6 +27,7 @@ const sponsors = [
   {name: "V-BUILD", img: "logo_vbuild.png", url: "https://v-build.be/"},
   {name: "Cafe 't Leeuwke", img: "https://leeuwsewielertoeristen.be/lwt1/wp-content/uploads/2024/03/logo_cafe_tleeuwke.png", url: "https://www.cafe-tleeuwke.com/"},
   {name: "Stedi Cars", img: "https://leeuwsewielertoeristen.be/lwt1/wp-content/uploads/2024/03/logo-stedi_cars.png", url: "https://www.stedicars.be/"},
+  {name: "Gorgon Motors", img: "https://leeuwsewielertoeristen.be/lwt1/wp-content/uploads/2024/10/gorgon.png", url: "https://www.gorgonmotors.be/fr/"},
 ];
 const shuffleArray = array => {
   for (let i = array.length - 1; i > 0; i--) {
